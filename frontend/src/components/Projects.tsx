@@ -23,8 +23,19 @@ export const Projects: React.FC = () => {
           >
             <div className="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden glass border border-white/10 group relative bg-dark-800 flex items-center justify-center">
               <div className="absolute inset-0 bg-primary-900/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
-              {/* Replace with project.image when available */}
-              <div className="text-slate-600 text-lg font-medium">[Project Image Placeholder]</div>
+              <img 
+                src={project.image} 
+                alt={project.name} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out relative z-0 bg-white"
+                onError={(e) => {
+                  // Fallback if image not found
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="absolute hidden inset-0 flex items-center justify-center text-slate-600 text-lg font-medium z-0">
+                [Project Image Placeholder]
+              </div>
             </div>
 
             <div className="w-full md:w-1/2 space-y-6">

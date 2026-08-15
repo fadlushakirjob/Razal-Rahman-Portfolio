@@ -47,8 +47,8 @@ export const projectsData = [
     technologies: ['Web', 'Mobile', 'Backend', 'APIs', 'Location Technology'],
     year: '2024 - Present',
     status: 'Active',
-    image: '/images/travelzync-placeholder.jpg',
-    link: 'https://travelzync.com', // placeholder
+    image: '/travelzync.png',
+    link: 'https://travelzync.com',
   },
 ];
 
