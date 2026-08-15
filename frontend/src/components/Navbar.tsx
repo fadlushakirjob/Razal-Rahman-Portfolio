@@ -23,13 +23,13 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass py-3' : 'bg-transparent py-5'
+        isScrolled ? 'bg-primary-600 shadow-md py-3' : 'bg-primary-600 py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="text-xl font-bold tracking-tight text-gray-900">
+            <a href="#" className="text-xl font-bold tracking-tight text-white">
               {siteConfig.name.toUpperCase()}
             </a>
           </div>
@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-primary-400 transition-colors text-sm font-medium"
+                className="text-white/80 hover:text-white transition-colors text-sm font-medium"
               >
                 {link.name}
               </a>
@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none"
+              className="text-white focus:outline-none"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50"
               >
                 {link.name}
               </a>
