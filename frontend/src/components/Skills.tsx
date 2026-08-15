@@ -10,12 +10,12 @@ const SkillCategory = ({ title, skills, delay }: { title: string, skills: string
     transition={{ duration: 0.5, delay }}
     className="glass-card p-8 rounded-2xl h-full"
   >
-    <h3 className="text-xl font-bold mb-6 text-white">{title}</h3>
+    <h3 className="text-xl font-bold mb-6 text-gray-900">{title}</h3>
     <div className="flex flex-wrap gap-2.5">
       {skills.map(skill => (
         <span 
           key={skill} 
-          className="px-4 py-2 bg-dark-900/50 border border-white/10 rounded-lg text-sm text-slate-300 hover:text-primary-400 hover:border-primary-500/30 transition-colors"
+          className="px-4 py-2 bg-gray-50/50 border border-gray-200 rounded-lg text-sm text-gray-600 hover:text-primary-400 hover:border-primary-500/30 transition-colors"
         >
           {skill}
         </span>
@@ -26,10 +26,10 @@ const SkillCategory = ({ title, skills, delay }: { title: string, skills: string
 
 export const Skills: React.FC = () => {
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">Technology & Skills</h2>
-        <p className="text-slate-400 text-lg">A multidisciplinary approach to building products.</p>
+        <p className="text-gray-500 text-lg">A multidisciplinary approach to building products.</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">

@@ -51,20 +51,20 @@ export const Hero: React.FC = () => {
             {siteConfig.name}
           </h1>
           
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 leading-relaxed">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-500 leading-relaxed">
             Founder & CEO of TravelZync Labs, building technology-driven solutions for the future of travel.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
             <a 
               href="#projects"
-              className="w-full sm:w-auto px-8 py-3.5 bg-primary-600 hover:bg-primary-500 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 bg-primary-600 hover:bg-primary-500 text-gray-900 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2"
             >
               Explore My Work <ArrowRight size={18} />
             </a>
             <a 
               href="#about"
-              className="w-full sm:w-auto px-8 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-lg font-medium transition-all duration-300 flex items-center justify-center"
+              className="w-full sm:w-auto px-8 py-3.5 bg-gray-100 hover:bg-gray-100 border border-gray-200 text-gray-900 rounded-lg font-medium transition-all duration-300 flex items-center justify-center"
             >
               About Me
             </a>
@@ -81,7 +81,7 @@ export const Hero: React.FC = () => {
       </div>
       
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-        <a href="#about" className="text-slate-500 hover:text-white transition-colors">
+        <a href="#about" className="text-gray-400 hover:text-gray-900 transition-colors">
           <ChevronDown size={32} />
         </a>
       </div>
