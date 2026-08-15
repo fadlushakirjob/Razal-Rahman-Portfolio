@@ -24,13 +24,15 @@ Message:
 
 Received: {message_instance.created_at.strftime('%Y-%m-%d %H:%M:%S')}
 """
-                send_mail(
+                from django.core.mail import EmailMessage
+                email = EmailMessage(
                     subject=f"New Portfolio Contact: {message_instance.subject}",
-                    message=email_body,
+                    body=email_body,
                     from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[settings.CONTACT_EMAIL],
-                    fail_silently=False,
+                    to=[settings.CONTACT_EMAIL],
+                    reply_to=[message_instance.email],
                 )
+                email.send(fail_silently=False)
             except Exception as e:
                 # Log email failure but don't fail the request since message is saved
                 print(f"Failed to send email: {e}")
