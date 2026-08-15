@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { siteConfig } from '../data/config';
+import profileImage from '../assets/razal.png';
 
 export const About: React.FC = () => {
   return (
@@ -36,13 +37,11 @@ export const About: React.FC = () => {
           {/* Decorative elements */}
           <div className="absolute -inset-2 bg-gradient-to-r from-primary-600 to-teal-400 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
           <div className="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden glass border border-white/10 flex items-center justify-center bg-dark-800">
-            {/* Fallback avatar if no image */}
-            <div className="text-center p-8">
-              <div className="w-24 h-24 mx-auto mb-4 bg-dark-700 rounded-full flex items-center justify-center border border-white/10 text-3xl font-bold text-slate-500">
-                {siteConfig.name[0]}
-              </div>
-              <p className="text-sm text-slate-500">[Professional Photo Placeholder]</p>
-            </div>
+            <img 
+              src={profileImage} 
+              alt={siteConfig.name} 
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-in-out" 
+            />
           </div>
         </motion.div>
       </div>
