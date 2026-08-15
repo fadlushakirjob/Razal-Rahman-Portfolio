@@ -3,4 +3,4 @@
 set -o errexit
 
 python manage.py migrate
-gunicorn backend_config.wsgi:application
+gunicorn backend_config.wsgi:application --workers 2 --threads 2
