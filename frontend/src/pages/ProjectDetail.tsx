@@ -1,19 +1,19 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
-import { projectsData } from '../data/portfolio';
+import { venturesData } from '../data/portfolio';
 
 export const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const project = projectsData.find(p => p.id === id);
+  const project = venturesData.find(p => p.id === id);
 
   if (!project) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center pt-24 px-4 text-center">
-        <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-        <p className="text-gray-500 mb-8">The project you are looking for does not exist.</p>
-        <Link to="/projects" className="px-6 py-2 bg-primary-600 hover:bg-primary-500 text-gray-900 rounded-lg transition-colors">
-          View All Projects
+        <h1 className="text-4xl font-bold mb-4">Venture Not Found</h1>
+        <p className="text-gray-500 mb-8">The venture you are looking for does not exist.</p>
+        <Link to="/" className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors">
+          Return to Home
         </Link>
       </main>
     );
@@ -22,38 +22,28 @@ export const ProjectDetail: React.FC = () => {
   return (
     <>
       <SEO 
-        title={`${project.name} | Project Details`}
+        title={`${project.name} | Venture Details`}
         description={project.description}
-        canonical={`/projects/${project.id}`}
-        ogImage={project.image}
+        canonical={`/ventures/${project.id}`}
       />
       <main className="pt-32 pb-24 px-4 max-w-4xl mx-auto">
-        <Link to="/projects" className="text-primary-400 hover:text-primary-300 mb-8 inline-block">
-          &larr; Back to Projects
+        <Link to="/" className="text-primary-600 hover:text-primary-700 mb-8 inline-block font-medium">
+          &larr; Back to Overview
         </Link>
         <article>
           <header className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{project.name}</h1>
-            <p className="text-xl text-gray-500">{project.description}</p>
+            <span className="text-xs font-bold uppercase tracking-wider text-primary-600">{project.role}</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-2 text-gray-900">{project.name}</h1>
+            <p className="text-xl text-gray-600">{project.description}</p>
           </header>
           
-          <img src={project.image} alt={`${project.name} preview`} className="w-full rounded-xl mb-12 shadow-2xl" />
-          
-          <section className="grid md:grid-cols-2 gap-8 mb-12">
+          <section className="gap-8 mb-12">
             <div>
-              <h2 className="text-2xl font-bold mb-4">Role & Status</h2>
-              <ul className="space-y-2 text-gray-600">
-                <li><strong>Role:</strong> {project.role}</li>
-                <li><strong>Timeline:</strong> {project.year}</li>
-                <li><strong>Status:</strong> {project.status}</li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Technologies</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-900">Focus Areas</h2>
               <div className="flex flex-wrap gap-2">
-                {project.technologies.map(tech => (
-                  <span key={tech} className="px-3 py-1 bg-gray-50 rounded-full text-sm text-gray-600 border border-gray-100">
-                    {tech}
+                {project.tags.map((tag: string) => (
+                  <span key={tag} className="px-3 py-1 bg-gray-50 rounded-full text-sm text-gray-600 border border-gray-200">
+                    {tag}
                   </span>
                 ))}
               </div>
@@ -66,9 +56,9 @@ export const ProjectDetail: React.FC = () => {
                 href={project.link} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-gray-900 rounded-lg font-medium transition-colors inline-flex items-center gap-2"
+                className="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors inline-flex items-center gap-2"
               >
-                Visit Project
+                Visit Website
               </a>
             </div>
           )}

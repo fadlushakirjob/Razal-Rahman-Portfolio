@@ -1,45 +1,102 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { journeyData } from '../data/portfolio';
+import { Rocket, ArrowRight } from 'lucide-react';
 
 export const Journey: React.FC = () => {
-  return (
-    <section id="journey" className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-t border-gray-100">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl font-bold mb-4">My Journey</h2>
-        <p className="text-gray-500 text-lg">The path from exploring technology to building a startup.</p>
-      </motion.div>
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = journeyData[activeIndex];
 
-      <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
-        {journeyData.map((item, index) => (
-          <motion.div 
-            key={item.year}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-          >
-            {/* Marker */}
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 bg-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10 text-primary-400 group-hover:bg-primary-900 transition-colors">
-              <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-            </div>
-            
-            {/* Card */}
-            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-xl">
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="font-bold text-xl text-gray-900">{item.year}</h3>
+  return (
+    <section id="journey" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-xs font-semibold uppercase tracking-wider mb-4">
+          Founder Journey
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+          From curious builder to infrastructure founder.
+        </h2>
+        <p className="text-gray-600 text-lg">
+          Every founder journey has its own route. Here is mine — from the first lines of code to building a company that moves people.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        {/* Navigation / Stepper */}
+        <div className="lg:col-span-5 space-y-2">
+          {journeyData.map((item, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveIndex(idx)}
+                className={`w-full text-left p-4 rounded-2xl transition-all duration-300 flex items-center justify-between border ${
+                  isActive
+                    ? 'bg-primary-600 text-white border-primary-600 shadow-md'
+                    : 'bg-white text-gray-800 border-gray-200 hover:border-primary-300 hover:bg-gray-50'
+                }`}
+              >
+                <div>
+                  <span className={`text-xs font-mono font-semibold tracking-wider block ${
+                    isActive ? 'text-primary-100' : 'text-primary-600'
+                  }`}>
+                    {item.year}
+                  </span>
+                  <span className="text-base font-bold mt-0.5 block">
+                    {item.title}
+                  </span>
+                </div>
+                <ArrowRight size={18} className={`transition-transform ${
+                  isActive ? 'translate-x-1 text-white' : 'text-gray-400 opacity-50'
+                }`} />
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Detail Display Card */}
+        <div className="lg:col-span-7">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeItem.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="p-8 sm:p-10 rounded-3xl bg-white border border-gray-200 shadow-sm relative overflow-hidden"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center mb-6">
+                <Rocket size={24} />
               </div>
-              <p className="text-gray-500 leading-relaxed">{item.description}</p>
-            </div>
-          </motion.div>
-        ))}
+
+              <span className="text-xs font-mono font-bold tracking-widest text-primary-600 uppercase">
+                {activeItem.year}
+              </span>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 mb-4">
+                {activeItem.title}
+              </h3>
+
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                {activeItem.description}
+              </p>
+
+              {/* Progress Indicator */}
+              <div className="flex items-center gap-2 pt-6 border-t border-gray-100">
+                {journeyData.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveIndex(i)}
+                    className={`h-2 flex-1 rounded-full transition-all duration-300 ${
+                      i === activeIndex ? 'bg-primary-600' : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                    aria-label={`Go to step ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

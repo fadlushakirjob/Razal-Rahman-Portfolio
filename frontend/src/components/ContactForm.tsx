@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { Mail, Send, CheckCircle2 } from 'lucide-react';
+import { siteConfig } from '../data/config';
 
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -17,7 +19,7 @@ export const ContactForm: React.FC = () => {
     setErrorMessage('');
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://razal-rahman-portfolio.onrender.com';
       const response = await axios.post(`${apiUrl}/api/contact`, formData);
       
       if (response.data.success) {
@@ -34,116 +36,149 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-16">
+    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
+      <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Left column / Pitch */}
         <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          className="lg:col-span-5 space-y-6"
         >
-          <h2 className="text-4xl font-bold mb-6">Let's Build Something Meaningful.</h2>
-          <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-            For business inquiries, partnerships, technology discussions, or collaborations, get in touch.
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-xs font-semibold uppercase tracking-wider">
+            Get in Touch
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Let's connect & build the future.
+          </h2>
+
+          <p className="text-gray-600 text-lg leading-relaxed">
+            Whether you're an investor, a fleet operator, a potential collaborator, or a journalist — I read every message personally and look forward to connecting.
           </p>
-         
+
+          <div className="p-6 rounded-2xl bg-gray-50 border border-gray-200 space-y-3">
+            <div className="flex items-center gap-3 text-gray-800 font-semibold text-sm">
+              <Mail size={18} className="text-primary-600" />
+              Direct Email
+            </div>
+            <a 
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="text-primary-600 hover:text-primary-700 font-medium text-base block break-all"
+            >
+              {siteConfig.contactEmail}
+            </a>
+          </div>
         </motion.div>
 
+        {/* Right column / Form */}
         <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass-card p-8 rounded-2xl"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="lg:col-span-7 p-8 sm:p-10 rounded-3xl bg-white border border-gray-200 shadow-sm"
         >
           {status === 'success' ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
-              <div className="w-16 h-16 bg-primary-500/20 text-primary-400 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
+            <div className="text-center space-y-4 py-8">
+              <div className="w-16 h-16 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mx-auto">
+                <CheckCircle2 size={32} />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Message Sent!</h3>
-              <p className="text-gray-500">Your message has been sent successfully. I will get back to you soon.</p>
+              <h3 className="text-2xl font-bold text-gray-900">Message Received!</h3>
+              <p className="text-gray-600 max-w-md mx-auto">
+                Thanks for reaching out — I have received your email and will respond as soon as possible.
+              </p>
               <button 
                 onClick={() => setStatus('idle')}
-                className="mt-4 px-6 py-2 bg-gray-100 hover:bg-gray-100 rounded-lg text-sm font-medium transition-colors"
+                className="mt-4 px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl text-sm font-semibold transition-colors"
               >
                 Send Another Message
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium text-gray-600">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
-                />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Your Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="e.g. Sarah Connor"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-600 focus:bg-white transition-all"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Your Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="sarah@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-600 focus:bg-white transition-all"
+                  />
+                </div>
               </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-gray-600">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-gray-600">Subject</label>
+
+              <div className="space-y-1.5">
+                <label htmlFor="subject" className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Subject / Topic</label>
                 <input
                   id="subject"
                   name="subject"
                   type="text"
                   required
+                  placeholder="Partnership inquiry / Investment / Transit discussion"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-600 focus:bg-white transition-all"
                 />
               </div>
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-gray-600">Message</label>
+
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-xs font-semibold text-gray-700 uppercase tracking-wider">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   required
                   rows={4}
+                  placeholder="Tell me about what you're working on or how we can collaborate..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full bg-gray-50/50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors resize-none"
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-primary-600 focus:bg-white transition-all resize-none"
                 />
               </div>
               
               {status === 'error' && (
-                <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
-                  <p className="text-red-400 text-sm">{errorMessage}</p>
+                <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-sm">
+                  {errorMessage}
                 </div>
               )}
               
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-3.5 bg-primary-600 hover:bg-primary-500 disabled:opacity-50 disabled:hover:bg-primary-600 text-gray-900 rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
+                className="w-full py-4 bg-primary-600 hover:bg-primary-700 disabled:opacity-50 text-white rounded-xl font-bold transition-all shadow-md flex items-center justify-center gap-2"
               >
                 {status === 'loading' ? (
                   <>
-                    <svg className="animate-spin h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Sending...
+                    Sending Message...
                   </>
                 ) : (
-                  'Send Message'
+                  <>
+                    <span>Send Message</span>
+                    <Send size={18} />
+                  </>
                 )}
               </button>
             </form>

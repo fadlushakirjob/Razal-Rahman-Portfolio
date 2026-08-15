@@ -1,10 +1,10 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Vision } from './components/Vision';
 import { About } from './components/About';
-import { Journey } from './components/Journey';
-import { Skills } from './components/Skills';
-import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
+import { Skills } from './components/Skills';
+import { Journey } from './components/Journey';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { SEO } from './components/SEO';
@@ -13,7 +13,7 @@ import { BackgroundNoise } from './components/BackgroundNoise';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-600 font-sans selection:bg-primary-500/30 selection:text-primary-100">
+    <div className="min-h-screen bg-white text-gray-700 font-sans selection:bg-primary-500 selection:text-white">
       <BackgroundNoise />
       <MouseGlow />
       <SEO />
@@ -21,11 +21,11 @@ function App() {
       
       <main>
         <Hero />
+        <Vision />
         <About />
-        <Journey />
-        <Skills />
-        <Experience />
         <Projects />
+        <Skills />
+        <Journey />
         <ContactForm />
       </main>
 
