@@ -5,6 +5,7 @@ import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Journey } from './components/Journey';
+import { Milestones } from './components/Milestones';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { SEO } from './components/SEO';
@@ -26,6 +27,7 @@ function App() {
         <Projects />
         <Skills />
         <Journey />
+        <Milestones />
         <ContactForm />
       </main>
 
