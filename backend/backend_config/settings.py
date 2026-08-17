@@ -136,6 +136,8 @@ EMAIL_TIMEOUT = 15
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_FROM', os.environ.get('EMAIL_USER', 'noreply@travelzync.com'))
 CONTACT_EMAIL = os.environ.get('EMAIL_TO', os.environ.get('EMAIL_USER', 'razalrahman@travelzync.com'))
 
+WEB3FORMS_ACCESS_KEY = os.environ.get('WEB3FORMS_ACCESS_KEY', '61215279-0213-44ba-b7bc-1ed7dc80b480')
+
 # Optional: If email is not configured, fallback to console
 if not EMAIL_HOST_USER:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
