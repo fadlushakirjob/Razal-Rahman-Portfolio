@@ -1,6 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../data/config';
-import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 export const Footer: React.FC = () => {
@@ -50,15 +50,6 @@ export const Footer: React.FC = () => {
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={18} />
-              </a>
-              <a 
-                href={siteConfig.socials.github} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary-600 hover:text-white transition-colors" 
-                aria-label="GitHub"
-              >
-                <FaGithub size={18} />
               </a>
               <a 
                 href={siteConfig.socials.twitter} 
