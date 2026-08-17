@@ -139,39 +139,39 @@ export const innovationsData: InnovationItem[] = [
 export const journeyData: JourneyItem[] = [
   {
     id: "learning",
-    year: "2016 — 2018",
+    year: "2018",
     title: "Learning & Development",
-    description: "Early deep-dive into electronics, technology fundamentals, and systems thinking, laying the groundwork for complex problem solving."
+    description: "Explored technology, built skills, and laid the foundation with continuous learning."
   },
   {
     id: "building",
-    year: "2019 — 2020",
+    year: "2020 - 2025",
     title: "Building Projects",
-    description: "Shipped a string of small products and experiments, learning product thinking, design, and engineering by doing — not by watching."
+    description: "Worked on real-world projects, solved problems, and gained hands-on experience."
   },
   {
     id: "starting",
-    year: "2021",
+    year: "2025",
     title: "Starting TravelZync",
-    description: "Identified the gap in public transportation: no real-time visibility, no digital ticketing, no data. TravelZync Labs was founded to close it."
+    description: "Took the leap and started TravelZync with a clear vision to transform travel."
   },
   {
     id: "mvp",
-    year: "2022 — 2023",
+    year: "2026",
     title: "Building the MVP",
-    description: "Built and tested the first version of the platform with real bus operators — live tracking, digital tickets, and an operator dashboard."
+    description: "Researched, validated, and built the MVP with a passionate team."
   },
   {
     id: "launch",
-    year: "2024",
+    year: "2026",
     title: "Company Launch",
-    description: "Officially launched TravelZync to the public, onboarding operators and passengers onto a single, unified mobility platform."
+    description: "TravelZync Labs Pvt. Ltd. is officially launched. The journey turned real."
   },
   {
     id: "future",
     year: "Now — Beyond",
     title: "Future Vision",
-    description: "Scaling TravelZync into a nationwide mobility infrastructure layer — powering every route, every ticket, every ride with intelligence."
+    description: "Scaling impact, empowering people, and redefining how India travels."
   }
 ];
 
