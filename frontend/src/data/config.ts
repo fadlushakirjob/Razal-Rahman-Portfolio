@@ -10,7 +10,7 @@ export const siteConfig = {
   socials: {
     linkedin: 'https://www.linkedin.com/in/razal54?utm_source=share_via&utm_content=profile&utm_medium=member_android',
     github: 'https://github.com/razalrahman',
-    twitter: 'https://twitter.com/razalrahman',
+    twitter: 'https://x.com/RazalRahman54',
     instagram: 'https://www.instagram.com/razalrahman.i?igsh=aTh3MHFmanV6N2Z4&igsi=aTh3MHFmanV6N2Z4',
     youtube: 'https://youtube.com/@travelzync',
   },

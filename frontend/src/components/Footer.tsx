@@ -1,6 +1,7 @@
 import React from 'react';
 import { siteConfig } from '../data/config';
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -64,9 +65,9 @@ export const Footer: React.FC = () => {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary-600 hover:text-white transition-colors" 
-                aria-label="Twitter"
+                aria-label="X (Twitter)"
               >
-                <FaTwitter size={18} />
+                <FaXTwitter size={16} />
               </a>
             </div>
             <p className="text-gray-600 text-sm mt-4">
