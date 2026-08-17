@@ -1,6 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../data/config';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -31,7 +31,16 @@ export const Footer: React.FC = () => {
 
           <div className="space-y-4">
             <h4 className="font-bold text-gray-900 tracking-wider uppercase text-xs">Connect</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
+              <a 
+                href={siteConfig.socials.instagram} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary-600 hover:text-white transition-colors" 
+                aria-label="Instagram"
+              >
+                <FaInstagram size={18} />
+              </a>
               <a 
                 href={siteConfig.socials.linkedin} 
                 target="_blank" 
