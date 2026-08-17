@@ -13,7 +13,7 @@ import { BackgroundNoise } from './components/BackgroundNoise';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-gray-700 font-sans selection:bg-primary-500 selection:text-white">
+    <div className="min-h-screen bg-[#0a0a0c] text-zinc-300 font-sans selection:bg-primary-600 selection:text-white">
       <BackgroundNoise />
       <MouseGlow />
       <SEO />

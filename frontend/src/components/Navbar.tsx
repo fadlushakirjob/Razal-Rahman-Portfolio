@@ -74,14 +74,14 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white absolute top-full left-0 w-full border-t border-gray-200 shadow-xl">
+        <div className="md:hidden bg-[#0d0d10] border-t border-white/10 shadow-2xl absolute top-full left-0 w-full">
           <div className="px-4 pt-3 pb-5 space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-2.5 rounded-xl text-base font-semibold text-gray-800 hover:text-primary-600 hover:bg-gray-50"
+                className="block px-3 py-2.5 rounded-xl text-base font-semibold text-zinc-200 hover:text-white hover:bg-white/5"
               >
                 {link.name}
               </a>

@@ -25,15 +25,15 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export const Skills: React.FC = () => {
   return (
-    <section id="innovations" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-gray-100">
+    <section id="innovations" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10">
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 text-primary-700 text-xs font-semibold uppercase tracking-wider mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-950/80 border border-primary-800/60 text-primary-400 text-xs font-semibold uppercase tracking-wider mb-4">
           Platform Architecture & Innovation
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-4">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
           Systems engineered to move millions.
         </h2>
-        <p className="text-gray-600 text-lg">
+        <p className="text-zinc-400 text-lg">
           Every piece of TravelZync is designed to work together — from the moment a bus leaves the depot to the moment a passenger steps off at their stop.
         </p>
       </div>
@@ -46,15 +46,15 @@ export const Skills: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm hover:border-primary-300 hover:shadow-md transition-all duration-300 group"
+            className="p-6 rounded-2xl bg-zinc-900/60 border border-white/10 shadow-sm hover:border-primary-500/40 hover:bg-zinc-900/90 hover:shadow-xl transition-all duration-300 group"
           >
-            <div className="w-12 h-12 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-5 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
+            <div className="w-12 h-12 rounded-xl bg-primary-950/80 border border-primary-800/40 text-primary-400 flex items-center justify-center mb-5 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
               {iconMap[item.iconName]}
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">
+            <h3 className="text-lg font-bold text-white mb-2">
               {item.title}
             </h3>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-zinc-400 leading-relaxed">
               {item.description}
             </p>
           </motion.div>

@@ -30,7 +30,7 @@ export const MouseGlow: React.FC = () => {
         mass: 0.5
       }}
       style={{
-        background: 'radial-gradient(circle, rgba(20, 184, 166, 0.08) 0%, rgba(15, 23, 42, 0) 50%)',
+        background: 'radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, rgba(9, 9, 11, 0) 65%)',
       }}
     />
   );
