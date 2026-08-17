@@ -15,5 +15,5 @@ export const siteConfig = {
     facebook: 'https://www.facebook.com/share/19EC1JjkSm/',
     youtube: 'https://youtube.com/@travelzync',
   },
-  contactEmail: 'razalrahman@travelzinc.com',
+  contactEmail: 'razalrahman@travelzync.com',
 };
