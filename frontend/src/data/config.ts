@@ -12,6 +12,7 @@ export const siteConfig = {
     github: 'https://github.com/razalrahman',
     twitter: 'https://x.com/RazalRahman54',
     instagram: 'https://www.instagram.com/razalrahman.i?igsh=aTh3MHFmanV6N2Z4&igsi=aTh3MHFmanV6N2Z4',
+    facebook: 'https://www.facebook.com/share/19EC1JjkSm/',
     youtube: 'https://youtube.com/@travelzync',
   },
   contactEmail: 'razalrahman@travelzinc.com',

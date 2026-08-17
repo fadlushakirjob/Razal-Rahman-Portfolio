@@ -1,6 +1,6 @@
 import React from 'react';
 import { siteConfig } from '../data/config';
-import { FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 export const Footer: React.FC = () => {
@@ -59,6 +59,15 @@ export const Footer: React.FC = () => {
                 aria-label="X (Twitter)"
               >
                 <FaXTwitter size={16} />
+              </a>
+              <a 
+                href={siteConfig.socials.facebook} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 hover:bg-primary-600 hover:text-white transition-colors" 
+                aria-label="Facebook"
+              >
+                <FaFacebookF size={16} />
               </a>
             </div>
             <p className="text-gray-600 text-sm mt-4">
