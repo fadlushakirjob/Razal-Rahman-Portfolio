@@ -14,5 +14,5 @@ export const siteConfig = {
     instagram: 'https://instagram.com/razalrahman',
     youtube: 'https://youtube.com/@travelzync',
   },
-  contactEmail: 'razal@travelzync.com',
+  contactEmail: 'razalrahman@travelzinc.com',
 };
