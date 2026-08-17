@@ -34,8 +34,9 @@ Received: {message_instance.created_at.strftime('%Y-%m-%d %H:%M:%S')}
                 )
                 email.send(fail_silently=False)
             except Exception as e:
-                # Log email failure but don't fail the request since message is saved
+                import traceback
                 print(f"Failed to send email: {e}")
+                traceback.print_exc()
 
             return Response({
                 "success": True, 

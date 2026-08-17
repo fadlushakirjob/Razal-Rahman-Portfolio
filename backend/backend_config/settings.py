@@ -118,6 +118,13 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Email Configuration
+import socket
+# Force IPv4 socket resolution to prevent [Errno 101] Network unreachable on cloud platforms
+_orig_getaddrinfo = socket.getaddrinfo
+def _ipv4_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    return _orig_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+socket.getaddrinfo = _ipv4_getaddrinfo
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
@@ -125,8 +132,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD', '')
 EMAIL_USE_TLS = EMAIL_PORT == 587
 EMAIL_USE_SSL = EMAIL_PORT == 465
-DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_FROM', 'noreply@yourdomain.com')
-CONTACT_EMAIL = os.environ.get('EMAIL_TO', 'youremail@yourdomain.com')
+EMAIL_TIMEOUT = 15
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_FROM', os.environ.get('EMAIL_USER', 'noreply@travelzync.com'))
+CONTACT_EMAIL = os.environ.get('EMAIL_TO', os.environ.get('EMAIL_USER', 'razalrahman@travelzync.com'))
 
 # Optional: If email is not configured, fallback to console
 if not EMAIL_HOST_USER:
