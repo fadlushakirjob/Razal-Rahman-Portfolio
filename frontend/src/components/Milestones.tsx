@@ -4,7 +4,15 @@ import { X, ChevronLeft, ChevronRight, Maximize2, Camera } from 'lucide-react';
 
 // Dynamically import all milestone images from assets folder
 const imageModules = import.meta.glob<{ default: string }>('../assets/*.jpeg', { eager: true });
-const milestoneImages = Object.values(imageModules).map((mod) => mod.default);
+
+// Sort images numerically based on filename
+const milestoneImages = Object.entries(imageModules)
+  .sort(([pathA], [pathB]) => {
+    const numA = parseInt(pathA.match(/\/(\d+)\.jpeg$/)?.[1] || '0', 10);
+    const numB = parseInt(pathB.match(/\/(\d+)\.jpeg$/)?.[1] || '0', 10);
+    return numA - numB;
+  })
+  .map(([, mod]) => mod.default);
 
 export const Milestones: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
