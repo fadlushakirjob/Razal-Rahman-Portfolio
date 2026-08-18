@@ -8,8 +8,8 @@ const imageModules = import.meta.glob<{ default: string }>('../assets/*.jpeg', {
 // Sort images numerically based on filename
 const milestoneImages = Object.entries(imageModules)
   .sort(([pathA], [pathB]) => {
-    const numA = parseInt(pathA.match(/\/(\d+)\.jpeg$/)?.[1] || '0', 10);
-    const numB = parseInt(pathB.match(/\/(\d+)\.jpeg$/)?.[1] || '0', 10);
+    const numA = parseInt(pathA.match(/(\d+)\.jpeg$/)?.[1] || '0', 10);
+    const numB = parseInt(pathB.match(/(\d+)\.jpeg$/)?.[1] || '0', 10);
     return numA - numB;
   })
   .map(([, mod]) => mod.default);
